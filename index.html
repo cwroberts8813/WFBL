@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>WFBL</title>
+<!-- Home Screen launcher for the WFBL League Hub: gives the hub a basketball icon on iPhone.
+     In Safari it shows "Add to Home Screen" steps; opened from the Home Screen it goes straight to the hub. -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="WFBL">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#132a44">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="manifest" href="manifest.webmanifest">
+<style>
+  :root { color-scheme: dark; }
+  html, body { margin: 0; height: 100%; background: #132a44; color: #f3f4f1;
+    font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+  main { min-height: 100%; box-sizing: border-box; display: flex; flex-direction: column; align-items: center;
+    justify-content: center; text-align: center; padding: 32px 16px; gap: 18px; }
+  img { width: 112px; height: 112px; border-radius: 24px; box-shadow: 0 8px 24px rgba(0,0,0,.35); }
+  h1 { margin: 0; font-size: 28px; letter-spacing: .02em; }
+  a.btn { display: inline-block; background: #e8661f; color: #fff; text-decoration: none; font-weight: 700;
+    padding: 12px 22px; border-radius: 10px; }
+  ol { text-align: left; max-width: 320px; margin: 0; padding-left: 22px; color: #c9d1d9; }
+  .muted { color: #9aa7b3; font-size: 14px; }
+</style>
+</head>
+<body>
+<main>
+  <img src="apple-touch-icon.png" alt="">
+  <h1>WFBL League Hub</h1>
+  <a class="btn" id="go" href="https://claude.ai/artifact/KDZkKTubZoab7dKAdm9iqg">Open the hub</a>
+  <ol id="steps">
+    <li>Tap the Share button in Safari.</li>
+    <li>Tap <b>Add to Home Screen</b>, then <b>Add</b>.</li>
+    <li>Open WFBL from your Home Screen. It goes straight to the hub.</li>
+  </ol>
+  <p class="muted" id="msg"></p>
+</main>
+<script>
+  const HUB = 'https://claude.ai/artifact/KDZkKTubZoab7dKAdm9iqg';
+  // Opened from the Home Screen: skip this page and go to the hub
+  const standalone = window.navigator.standalone === true || matchMedia('(display-mode: standalone)').matches;
+  if (standalone) { document.getElementById('steps').hidden = true; document.getElementById('msg').textContent = 'Opening the hub…'; location.replace(HUB); }
+</script>
+</body>
+</html>
